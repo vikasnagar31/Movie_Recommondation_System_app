@@ -1,7 +1,7 @@
 # 🎬 Movie Recommendation System
 
 <p align="center">
-  <img src="Movie-Recommendation-System.webp" alt="Movie Recommendation System Banner" width="100%"/>
+  <img src="Movie-Recommendation-System.png" alt="Movie Recommendation System Banner" width="100%"/>
 </p>
 
 <p align="center">
