@@ -12,7 +12,7 @@
 
 ---
 
-## 📌 Overview
+##  Overview
 
 A full-stack **Movie Recommendation System** built with **Content-Based Filtering** with a live interactive **Streamlit web application** deployed on Streamlit Cloud.
 
@@ -22,14 +22,14 @@ The system recommends movies based on shared **genres** and **release year**, us
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
-- 🎯 **Dual Recommendation Engine** — Content-Based + Collaborative Filtering approaches
-- 🧠 **Cosine Similarity** on genre + year features for smart content matching
-- 🔤 **Smart Title Preprocessing** — fixes suffix-style article errors (e.g. `"Mask, The"` → `"The Mask"`)
-- 📆 **Year-Aware Recommendations** — filters movies from 1985–2018 for modern trend alignment
-- ⚡ **Pickle-Serialized Model** — fast load times using pre-computed similarity matrix
-- 🌐 **Deployed Web App** — live on Streamlit Cloud, accessible from any browser
+-  **Dual Recommendation Engine** — Content-Based + Collaborative Filtering approaches
+-  **Cosine Similarity** on genre + year features for smart content matching
+   **Smart Title Preprocessing** — fixes suffix-style article errors (e.g. `"Mask, The"` → `"The Mask"`)
+-  **Year-Aware Recommendations** — filters movies from 1985–2018 for modern trend alignment
+-  **Pickle-Serialized Model** — fast load times using pre-computed similarity matrix
+-  **Deployed Web App** — live on Streamlit Cloud, accessible from any browser
 
 ---
 
@@ -71,10 +71,6 @@ Movies Recommendation System/
 | Compute | **Cosine Similarity** across `[year + genre]` feature matrix |
 | Serialize | Save similarity matrix & data dict as `.pkl` for fast inference |
 
-**Similarity Formula:**
-
-$$\text{cosine\_similarity}(A, B) = \frac{A \cdot B}{\|A\| \cdot \|B\|}$$
-
 The feature vector for each movie consists of its **release year** and **19 binary genre flags** (Action, Adventure, Animation, Comedy, Crime, Documentary, Drama, Fantasy, Film-Noir, Horror, IMAX, Musical, Mystery, Romance, Sci-Fi, Thriller, War, Western, Children).
 
 ### 2. Collaborative Filtering
@@ -89,20 +85,18 @@ Uses user-item interaction data (`rating.xls`) to discover patterns in how users
 |------|-------------|------|
 | `movies.csv` | Movie ID, title (with year), pipe-separated genres | ~483 KB |
 | `rating.xls` | User ratings (userId, movieId, rating, timestamp) | ~2,426 KB |
-| `u.data` | MovieLens 100K ratings dataset | ~1,933 KB |
-| `u.item` | MovieLens item data | ~231 KB |
 
 **Data range used:** Movies released between **1985–2018** (to capture modern genre trends).  
 **Total unique genres:** 19 (after removing `(no genres listed)` entries).
 
 ---
 
-## 🖥️ Web Application
+##  Web Application
 
 The Streamlit app allows users to:
 1. Select any movie from the dataset via a dropdown
 2. Instantly get **Top 5 most similar movie recommendations**
-3. View movie genres and release year alongside recommendations
+3. View ratings,timelength genres and release year, description alongside recommendations
 
 Built and deployed using:
 - **Streamlit** for the interactive frontend
@@ -123,13 +117,12 @@ Python 3.8+
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/movies-recommendation-system.git
+git clone https://github.com/vikasnagar31/movies-recommendation-system.git
 cd movies-recommendation-system
 
 # 2. Create and activate virtual environment
 python -m venv myvenv
-source myvenv/bin/activate      # Linux/Mac
-myvenv\Scripts\activate         # Windows
+myvenv\Scripts\activate       
 
 # 3. Install dependencies
 pip install -r requirements.txt
@@ -140,56 +133,55 @@ streamlit run Movie_Recommendation_System_app.py
 
 ---
 
-## 📦 Dependencies
+##  Dependencies
 
 ```
 pandas
 numpy
-matplotlib
-seaborn
 scikit-learn
 streamlit
 pickle5
+requests
+
 ```
 
 > Full list in `requirements.txt`
 
 ---
 
-## 📈 Results & Sample Output
+##  Results & Sample Output
 
-**Input:** `Jumanji`
+**Input:** `Toy Story`
 
 **Top 5 Content-Based Recommendations:**
 ```
-1. The Indian in the Cupboard   (Adventure, Children, Fantasy | 1995)
-2. Matilda                      (Children, Comedy, Fantasy | 1996)
-3. Pagemaster, The              (Action, Adventure, Animation | 1994)
-4. NeverEnding Story, The       (Adventure, Children, Fantasy | 1984)
-5. Labyrinth                    (Adventure, Fantasy | 1986)
+1. Antz                                     (Animation, Adventure, Comedy | 1998)
+2. Toy Story 2                              (Animation, Adventure, Comedy | 1999)
+3. The Adventures of Rocky and Bullwinkle   (Animation, Adventure, Comedy | 2018)
+4. The Emperor's New Groove                 (Animation, Adventure, Comedy | 2000)
+5. Monsters, Inc.                           (Animation, Adventure, Comedy | 2001)
 ```
 
 ---
 
-## 🧩 Skills Demonstrated
+##  Skills Demonstrated
 
-- ✅ Data Wrangling & Feature Engineering with **Pandas / NumPy**
-- ✅ NLP-style text preprocessing (title normalization, suffix correction)
-- ✅ **One-Hot Encoding** for multi-label genre classification
-- ✅ **Cosine Similarity** for unsupervised similarity computation
-- ✅ **Collaborative Filtering** using user-item interaction matrices
-- ✅ Model serialization with **Pickle**
-- ✅ End-to-end **ML application deployment** with Streamlit Cloud
-- ✅ Clean, modular notebook code with reusable UDFs
+-  Data Wrangling & Feature Engineering with **Pandas / NumPy**
+-  NLP-style text preprocessing (title normalization, suffix correction)
+-  **One-Hot Encoding** for multi-label genre classification
+-  **Cosine Similarity** for unsupervised similarity computation
+-  **Collaborative Filtering** using user-item interaction matrices
+-  Model serialization with **Pickle**
+-  End-to-end **ML application deployment** with Streamlit Cloud
+-  Clean, modular notebook code with reusable UDFs
 
 ---
 
 ## 🤝 Connect
 
-**Made by [Your Name]**  
-📧 your.email@example.com  
-🔗 [LinkedIn](https://linkedin.com/in/yourprofile) | [GitHub](https://github.com/your-username) | [Portfolio](https://your-portfolio.com)
-
+**Made by [Vikas Nagar]**  
+📧 nagarvikas2003@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/vikas31/) | 
 ---
 
 <p align="center">⭐ If you found this helpful, consider giving it a star!</p>
