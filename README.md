@@ -1,155 +1,141 @@
-# 🎬 Movie Recommendation System
+<div align="center">
+<h1>🎬 CineMatch — Movie Recommendation System</h1>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=E50914&center=true&vCenter=true&random=false&width=780&lines=Content-Based+%7C+Collaborative+Filtering+%7C+Streamlit;Find+Your+Next+Favorite+Movie+in+Seconds;Cosine+Similarity+%7C+OMDb+API+%7C+Real-Time+Recommendations" alt="Typing SVG" />
+<br/>
 
-<p align="center">
-  <img src="Movie-Recommendation-System.png" alt="Movie Recommendation System Banner" width="100%"/>
-</p>
+![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-<p align="center">
-  <a href="https://movie-recommender-vikas.streamlit.app/">
-    <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Streamlit App"/>
-  </a>
-</p>
-
----
-
-##  Overview
-
-A full-stack **Movie Recommendation System** built with **Content-Based Filtering** with a live interactive **Streamlit web application** deployed on Streamlit Cloud.
-
-The system recommends movies based on shared **genres** and **release year**, using cosine similarity to identify the most similar titles to any movie a user selects.
-
-> 🚀 **Live Demo:** [Click here to try the app](https://movie-recommender-vikas.streamlit.app/)
+</div>
 
 ---
 
-##  Key Features
+<div align="center">
 
--  **Dual Recommendation Engine** — Content-Based + Collaborative Filtering approaches
--  **Cosine Similarity** on genre + year features for smart content matching
-   **Smart Title Preprocessing** — fixes suffix-style article errors (e.g. `"Mask, The"` → `"The Mask"`)
--  **Year-Aware Recommendations** — filters movies from 1985–2018 for modern trend alignment
--  **Pickle-Serialized Model** — fast load times using pre-computed similarity matrix
--  **Deployed Web App** — live on Streamlit Cloud, accessible from any browser
+<img src="assets/Movie-Recommendation-System.webp" alt="CineMatch Movie Recommendation System" width="1000"/>
+
+</div>
 
 ---
 
-##  Project Architecture
+## 📖 Overview
+
+**CineMatch** is an end-to-end movie recommendation engine built on the **MovieLens dataset**, using **Content-Based Filtering** as the production recommendation approach. The system recommends movies based on **genre and release-year similarity**, using **cosine similarity** to identify the most relevant titles.
+
+The project also implements and evaluates **User-Based Collaborative Filtering** as a comparative recommendation approach in a separate notebook. The production content-based model powers a live **Streamlit web application** featuring a custom dark, Netflix-inspired interface with **real-time movie posters, ratings, and plot summaries** retrieved through the **OMDb API**.
+ 
+---
+
+## 📑 Table of Contents
+- [Demo](#-demo)
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [Dataset](#-dataset)
+- [Methodology](#-methodology)
+- [Results & Sample Output](#-results--sample-output)
+- [Tech Stack](#️-tech-stack)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Future Improvements](#-future-improvements)
+- [Author](#-author)
+
+---
+
+## 🎥 Demo
+
+<div align="center">
+
+<img src="assets/Movie-Recommendation-System.gif" alt="CineMatch Movie Recommendation System Demo" width="1000"/>
+
+<br><br>
+
+<a href="https://cinematch-recommendation-engine.streamlit.app/">
+  <img src="https://img.shields.io/badge/🚀%20Live%20Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Live Demo"/>
+</a>
+
+</div>
+
+---
+
+## ✨ Features
+
+- 🎬 **Personalized Top-5 Movie Recommendations** — Generates relevant movie recommendations from any selected title
+- 🎯 **Content-Based Recommendation** — Recommends movies using **genre and release-year similarity** with cosine similarity.
+- 🤝 **Collaborative Filtering** — Implements **User-Based Collaborative Filtering** as a comparative recommendation approach.
+- 🌐 **Interactive Streamlit Application** — Provides a user-friendly, Netflix-inspired interface for exploring recommendations.
+- 🖼️ **Real-Time Movie Metadata** — Fetches movie **posters, ratings, and plot summaries** dynamically using the **OMDb API**.
+- ⚡ **Fast inference** — precomputed similarity matrix, loaded via pickle, no retraining at runtime
+- 🚀 **Cloud Deployment** — Deploys the recommendation engine as a live web application using **Streamlit Cloud**.
+
+---
+
+## 📂 Project Structure
 
 ```
-Movies Recommendation System/
+Movie-Recommondation-System/
 │
-├── Movie_Recommendation_System_app.py          # Streamlit web app
-├── Recommendation_System_Content_Based.ipynb   # Content-based notebook
-├── Recommendation_System_Collaborative.ipynb   # Collaborative filtering notebook
+├── app/
+│   └── Movie_Recommendation_System_app.py       # Streamlit app (CineMatch)
 │
-├── movies.csv                                  # Movie metadata (title, genres)
-├── rating.xls                                  # User ratings data
+├── notebooks/
+│   ├── Recommendation System Content Based Filtering.ipynb
+│   └── Recommondation System Collaborative based filtering.ipynb
 │
-├── data_dict.pkl                               # Preprocessed movie data (serialized)
-├── similarity.pkl                              # Precomputed cosine similarity matrix
+├── data/
+│   ├── movies.csv
+│   ├── rating.csv
+│   ├── u.data
+│   └── u.item
 │
-├── requirements.txt                            # Python dependencies
+├── models/
+│   ├── data_dict.pkl
+│   └── similarity.pkl
+│
+├── assets/
+│   ├── Movie-Recommendation-System.gif
+│   └── Movie-Recommendation-System.webp
+│
+├── .gitignore
+├── .gitattributes
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 🔬 Technical Approach
+## 🗂️ Dataset
 
-### 1. Content-Based Filtering
+Built on the [MovieLens dataset](https://www.kaggle.com/datasets/shubhammehta21/movie-lens-small-latest-dataset):
 
-**Feature Engineering Pipeline:**
-
-| Step | Operation |
-|------|-----------|
-| Load | Read `movies.csv` with title & genre data |
-| Clean | Remove duplicates, strip brackets from titles |
-| Extract | Parse release year from title string |
-| Filter | Keep movies from **1985–2018** for trend relevance |
-| Fix | Correct suffix-article titles (`", The"` → `"The "`) |
-| Encode | **One-Hot Encode** all 19 unique genres |
-| Compute | **Cosine Similarity** across `[year + genre]` feature matrix |
-| Serialize | Save similarity matrix & data dict as `.pkl` for fast inference |
-
-The feature vector for each movie consists of its **release year** and **19 binary genre flags** (Action, Adventure, Animation, Comedy, Crime, Documentary, Drama, Fantasy, Film-Noir, Horror, IMAX, Musical, Mystery, Romance, Sci-Fi, Thriller, War, Western, Children).
-
-### 2. Collaborative Filtering
-
-Uses user-item interaction data (`rating.xls`) to discover patterns in how users rate movies — recommending films that users with similar tastes have enjoyed.
+- **movies.csv** — 9,742 movies (title, genres) → cleaned to a 7,692-movie corpus
+- **rating.csv** — 100,836 ratings from 610 users across 9,724 movies
 
 ---
 
-## 📊 Dataset
+## 🧠 Methodology
 
-| File | Description | Size |
-|------|-------------|------|
-| `movies.csv` | Movie ID, title (with year), pipe-separated genres | ~483 KB |
-| `rating.xls` | User ratings (userId, movieId, rating, timestamp) | ~2,426 KB |
+### 1️⃣ Content-Based Filtering *(primary, deployed)*
 
-**Data range used:** Movies released between **1985–2018** (to capture modern genre trends).  
-**Total unique genres:** 19 (after removing `(no genres listed)` entries).
+- Cleaned raw titles: removed duplicates, extracted release year, fixed 1,113 titles with misplaced articles (`", The"` → `"The "`)
+- Filtered to movies released **1985–2018** to keep recommendations relevant to modern viewing trends
+- One-hot encoded **19 genres** and combined with release year into a single feature matrix
+- Computed a **7,692 × 7,692 cosine similarity matrix** between movies
+- For any input movie, the top 5 most similar movies (by similarity score) are returned
 
----
+### 2️⃣ Collaborative Filtering *(comparison approach)*
 
-##  Web Application
+- Built a user–item ratings matrix (251 active users × 7,063 movies, filtered to post-2010 activity)
+- Computed **user-user cosine similarity**
+- For a target user, identified the most similar users and recommended movies they'd watched that the target hadn't yet seen
 
-The Streamlit app allows users to:
-1. Select any movie from the dataset via a dropdown
-2. Instantly get **Top 5 most similar movie recommendations**
-3. View ratings,timelength genres and release year, description alongside recommendations
-
-Built and deployed using:
-- **Streamlit** for the interactive frontend
-- **Pickle** for loading precomputed similarity matrix (`similarity.pkl`)
-- **Pandas** for real-time data lookups from `data_dict.pkl`
+> The content-based approach was chosen for deployment since it doesn't suffer from the cold-start problem and generalizes well to any movie in the catalog, while collaborative filtering was kept as a comparative experiment.
 
 ---
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-```bash
-Python 3.8+
-```
-
-### Installation
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/vikasnagar31/movies-recommendation-system.git
-cd movies-recommendation-system
-
-# 2. Create and activate virtual environment
-python -m venv myvenv
-myvenv\Scripts\activate       
-
-# 3. Install dependencies
-pip install -r requirements.txt
-
-# 4. Run the Streamlit app
-streamlit run Movie_Recommendation_System_app.py
-```
-
----
-
-##  Dependencies
-
-```
-pandas
-numpy
-scikit-learn
-streamlit
-pickle5
-requests
-
-```
-
-> Full list in `requirements.txt`
-
----
-
-##  Results & Sample Output
+## 📊 Results & Sample Output
 
 **Input:** `Toy Story`
 
@@ -164,24 +150,65 @@ requests
 
 ---
 
-##  Skills Demonstrated
 
--  Data Wrangling & Feature Engineering with **Pandas / NumPy**
--  NLP-style text preprocessing (title normalization, suffix correction)
--  **One-Hot Encoding** for multi-label genre classification
--  **Cosine Similarity** for unsupervised similarity computation
--  **Collaborative Filtering** using user-item interaction matrices
--  Model serialization with **Pickle**
--  End-to-end **ML application deployment** with Streamlit Cloud
--  Clean, modular notebook code with reusable UDFs
+## 🛠️ Tech Stack
+
+| Category | Tools |
+|---|---|
+| Language | Python |
+| Data Processing | Pandas, NumPy |
+| Machine Learning | scikit-learn (cosine similarity) |
+| Web App | Streamlit |
+| External API | OMDb API |
+| Deployment Artifacts | Pickle |
 
 ---
 
-## 🤝 Connect
+## ⚙️ Installation
 
-**Made by [Vikas Nagar]**  
-📧 nagarvikas2003@gmail.com  
-🔗 [LinkedIn](https://www.linkedin.com/in/vikas31/) | 
+```bash
+# Clone the repository
+git clone https://github.com/vikasnagar31/Movie-Recommondation-System.git
+cd Movie-Recommondation-System
+
+# Create a virtual environment
+python -m venv venv
+source venv/bin/activate      # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
 ---
 
-<p align="center">⭐ If you found this helpful, consider giving it a star!</p>
+## 🚀 Usage
+
+```bash
+cd app
+streamlit run Movie_Recommendation_System_app.py
+```
+
+Then open `http://localhost:8501` in your browser, pick a movie from the dropdown, and hit **Recommend**.
+
+> ⚠️ **Note:** This app requires an OMDb API key. Get a free key at [omdbapi.com](https://www.omdbapi.com/apikey.aspx) and set it as an environment variable or in `.streamlit/secrets.toml` — never hardcode it directly in the source file.
+
+
+## 🔮 Future Improvements
+
+- [ ] Hybrid model combining content-based and collaborative signals
+- [ ] Incorporate cast, director, and plot-text similarity (TF-IDF / embeddings) for richer content-based matching
+- [ ] Deploy collaborative filtering model as a second app mode
+- [ ] Host on Streamlit Community Cloud with a live demo link
+
+---
+
+## 👤 Author
+
+**Vikas Nagar**
+
+📧 nagarvikas2003@gmail.com
+🔗 [LinkedIn](https://www.linkedin.com/in/vikas31/)
+
+⭐ If you found this project interesting, consider giving it a star!
+
+</div>
