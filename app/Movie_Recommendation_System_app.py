@@ -95,9 +95,8 @@ img { border-radius: 10px !important; }
 </div>
 """, unsafe_allow_html=True)
 
-
-data_dict = pickle.load(open('data_dict.pkl', 'rb'))
-similarity = pickle.load(open('similarity.pkl', 'rb'))
+data_dict = pickle.load(open("models/data_dict.pkl", "rb"))
+similarity = pickle.load(open("models/similarity.pkl", "rb"))
 final_df = pd.DataFrame(data_dict)
 
 OMDB_API_KEY = "768ac12"
